@@ -1,23 +1,13 @@
+  // Importación de las dependencias necesarias
   import React, { useState } from 'react';
-  import { Select, DatePicker, Space } from 'antd';
-  import dayjs from 'dayjs';
-  import isoWeek from 'dayjs/plugin/isoWeek';
+  import { Select, Space } from 'antd';
 
-  dayjs.extend(isoWeek);
-
-  const FilterReportC = () => {
-    const [dateRange, setDateRange] = useState('day');
+  // Componente principal de filtrado
+  const FilterReportC = ({ onFilterChange }) => {
+    // Estados para manejar los filtros
     const [hotel, setHotel] = useState('hotel1');
-    const [roomType, setRoomType] = useState('single');
 
-    const { RangePicker } = DatePicker;
-
-    const dateRangeOptions = [
-      { value: 'day', label: 'Día' },
-      { value: 'week', label: 'Semana' },
-      { value: 'month', label: 'Mes' }
-    ];
-
+    // Opciones para el selector de hoteles
     const hotelOptions = [
       { value: 'hotel1', label: 'Hilton Garden' },
       { value: 'hotel2', label: 'Marriott International' },
@@ -26,41 +16,17 @@
       { value: 'hotel5', label: 'Four Seasons' }
     ];
 
-    const roomTypeOptions = [
-      { value: 'single', label: 'Individual - $100/noche' },
-      { value: 'double', label: 'Doble - $180/noche' },
-      { value: 'suite', label: 'Suite - $300/noche' },
-      { value: 'executive', label: 'Ejecutiva - $250/noche' },
-      { value: 'family', label: 'Familiar - $220/noche' }
-    ];
-
-    const handleDateRangeChange = (value) => {
-      setDateRange(value);
-    };
-
+    // Manejador de cambio para el hotel
     const handleHotelChange = (value) => {
       setHotel(value);
+      onFilterChange({ hotel: value });
     };
 
-    const handleRoomTypeChange = (value) => {
-      setRoomType(value);
-    };
-
+    // Renderizado del componente
     return (
       <div className="filter-container">
         <Space direction="horizontal" size={12}>
-          <Select
-            placeholder="Seleccionar período"
-            options={dateRangeOptions}
-            onChange={handleDateRangeChange}
-            defaultValue="day"
-            style={{ width: 120 }}
-          />
-          <RangePicker
-            picker={dateRange}
-            format={dateRange === 'day' ? 'DD/MM/YYYY' : dateRange === 'week' ? 'WW/YYYY' : 'MM/YYYY'}
-            defaultValue={[dayjs(), dayjs().add(7, 'days')]}
-          />
+          {/* Selector de hotel */}
           <Select
             placeholder="Seleccionar hotel"
             options={hotelOptions}
@@ -68,17 +34,9 @@
             defaultValue="hotel1"
             style={{ width: 200 }}
           />
-          <Select
-            placeholder="Tipo de habitación"
-            options={roomTypeOptions}
-            onChange={handleRoomTypeChange}
-            defaultValue="single"
-            style={{ width: 200 }}
-          />
         </Space>
       </div>
     );
   };
-
 
   export default FilterReportC;
