@@ -10,3 +10,5 @@ Currently, two official plugins are available:
 
 Instaladores
 npm i react-router-dom
+npm install dayjs
+npm install antd
