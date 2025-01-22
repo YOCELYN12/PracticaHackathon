@@ -1,0 +1,44 @@
+body{
+    background-color: black;
+    color: white;
+    text-align: center;
+  }
+
+
+.div_disponibilidad{
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+}
+
+button{
+
+  background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px ;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    float: left;
+    margin-left: 0;
+  
+}
+
+.button_disabled{
+  background-color: #0003;
+  border: 2px white solid;
+}
+
+.button_enabled{
+  background-color: rgb(77, 68, 202);
+  border: 2px white solid;
+
+}
+
+option{
+  
+}
