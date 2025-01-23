@@ -1,8 +1,7 @@
-import ReactDOM from 'react-com/client'
+import ReactDOM from 'react-dom/client'
 import {CreateBrowserRouter, RouterProvider} from 'react-router-dom'
 import { StrictMode } from 'react'
 import Home from '../Pages/Home'
-
 
 
 const router = CreateBrowserRouter([
